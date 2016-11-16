@@ -66,6 +66,9 @@ def send_mail(mail_info):
     s.send_message(msg)
     s.close()
 
+
+
+#引数をタイトル・本文にしたメールを送信する
 def send_info_mail(mail_title, mail_body):
     mail_info = {}
     get_mail_info(mail_info)
@@ -78,7 +81,11 @@ def send_info_mail(mail_title, mail_body):
 
 if __name__ == '__main__':
     #このスクリプトの所在するパスに移動する
-    os.chdir(os.path.dirname(__file__))
+    file_path = os.path.dirname(__file__)
+    #パスが空白でない(スクリプトの所在パスにいない)場合は
+    #このスクリプトの所在するパスに移動する
+    if file_path != "":
+        os.chdir(file_path)
     
     #監視対象のプロセス起動時にメール送信するかどうかを切り替えられるようにする
     #起動していない場合はオプションによらずメール送信する
