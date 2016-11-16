@@ -9,6 +9,8 @@ from email.mime.text import MIMEText
 import subprocess
 #コマンドライン引数に使用
 import sys
+#ディレクトリ操作のため
+import os
 
 #監視するプロセス名
 process_name = "/bin/bash ./get_feed.sh"
@@ -75,6 +77,9 @@ def send_info_mail(mail_title, mail_body):
 ######################################################################################
 
 if __name__ == '__main__':
+    #このスクリプトの所在するパスに移動する
+    os.chdir(os.path.dirname(__file__))
+    
     #監視対象のプロセス起動時にメール送信するかどうかを切り替えられるようにする
     #起動していない場合はオプションによらずメール送信する
     
